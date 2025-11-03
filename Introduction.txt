@@ -1,0 +1,100 @@
+What is an Operating System (OS)?
+      An Operating System (OS) is the main system software that manages computer hardware and 
+     provides an interface for users and applications to interact with the machine.
+Why OS?:
+          To run applications (browser, games, terminal, etc.)
+          To communicate with hardware
+          To keep the system secure and stable
+          To manage files & multitasking
+ +---------------------------+
+|     Applications         |
+|  (Chrome, VSCode, etc)   |
++-------------+-------------+
+              |
+              v
++---------------------------+
+|     Operating System     |
+| (Manages all resources)  |
++-------------+-------------+
+              |
+              v
++---------------------------+
+|         Hardware         |
+| CPU | RAM | Disk | Devices|
++---------------------------+
+
+
+
+UNIX - UNiplexed Information Computing System              
+  
+  Unix is a multitasking, multi-user operating system developed in the 1970s at AT&T's Bell Labs. 
+  It is known for its stability, security, and flexibility, and is widely used in servers, workstations.
+
+Unix wasn’t the first OS.
+Before Unix, there were other operating systems like GM-NAA I/O, CTSS, and MULTICS.
+
+Unix became popular because it was:
+
+✔️ Portable (written in C)
+✔️ Multi-user & multi-tasking
+✔️ Simple and modular design
+✔️ The base for Linux, macOS, Android concepts
+
+
+What are Unix-like Systems?
+       operating systems that behave like Unix, follow its design principles, 
+       and often use similar commands — but are not the original Unix.
+       Examples:
+               Linux, macOS, BSD, and Solaris.
+
+|------------------------------------------------------------------------------------------------------------------------------------------------------|
+|Key Point	          |                Unix	                                  |               Linux                                                    |
+|------------------------------------------------------------------------------------------------------------------------------------------------------|
+|Type                 |        Proprietary / Commercial OS	                  |          Free & Open-Source OS                                         |
+|Cost	                |        Paid (licensed)	                              |          Free (enterprise versions available)                          |
+|Use Cases	          |        Large servers, mainframes, big enterprises     |          Servers, desktops, laptops, cloud, cybersecurity,             |
+|                     |                                                       |           DevOps, mobile (Android)                                     |
+|Availability	        |        Limited hardware platforms	                    |          Runs on almost all devices                                    |
+|GUI	                |        GUI optional, mostly command-line	            |          GUI available & customizable (GNOME, KDE, etc.)               |
+|Customization	      |        Very limited	                                  |          Highly customizable (distros, kernels, desktops)              |
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Linux: Linux is not the full OS—it is the kernel.
+       When we add programs, libraries, and tools around the Linux kernel, 
+       we get a Linux Operating System (Ubuntu, Kali, Fedora, etc.)
+
+Linux = Core engine
+Ubuntu/Kali = Full OS built on Linux kernel
+
+
+Kernel: The core part of the operating system
+        Controls hardware and system resources
+        Manages CPU, Memory, Disk, Devices
+        Does not interact directly with the user
+
+Kernel = Brain / Engine of the system
+
+Shell: A command interpreter
+       Takes commands from the user and sends them to the kernel
+       Converts human commands → machine instructions
+       Examples: Bash, Zsh, Sh, Fish
+
+Shell = Translator / Interface between user & kernel
+
+
+
+Terminal: A program (window) where you type commands
+         It runs the shell inside it
+
+Terminal = Screen/Chatbox to talk to the shell
+
+User
+ ↓
+Terminal (App to type commands)
+ ↓
+Shell (Interprets your commands)
+ ↓
+Linux Kernel (Controls hardware)
+ ↓
+Hardware (CPU, RAM, Disk, Devices)
