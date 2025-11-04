@@ -1,0 +1,42 @@
+Nano :
+    Its a simple text editor that we can access right from the terminal.
+    Includes all the basic text editing functionality:
+    search , spellcheck, syntax,highlighting
+
+To open up a file using nano 
+nano Filename - nano book.txt
+
+save - ctrl+o or ctrl+s
+exit - ctrl+x
+
+we can create a file in nano and add the data
+nano filename -then it open the editor 
+              after adding data 
+              saving the file
+
+SEARCHING
+ctrl+w : to search where the word is in the file
+alt+c : for case sensitive search 
+
+REPLACING
+ctrl+\ : first search the word
+         type what to be replaced with
+
+SPELL CHECK 
+ctrl+T -> ctrl+s  :will highlight mistakes and suggest corrections
+
+Steps to enable spell-check in Nano
+
+1.Install spell checker
+  sudo apt install aspell
+2.Open Nano config file
+  nano ~/.nanorc
+3.Remove # and space before set 
+  set speller "aspell -x -c"
+4.Save and exit Nano
+  Ctrl + O → Enter
+  Ctrl + X
+
+Open any file in Nano and press
+
+Ctrl + T
