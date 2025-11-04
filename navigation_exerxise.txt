@@ -62,14 +62,24 @@ cd Chickens
 Command:
 ls
 Output:
-Buckbeak  Elvis  Ethel  Frida  Hippo  Jaba
+-rw-r--r-- 1 aashika aashika 0 May 3 2021 Buckbeak 
+-rw-r--r-- 1 aashika aashika 0 Feb 14 2071 Elvis 
+-rw-r--r-- 1 aashika aashika 0 May 3 2021 Ethel 
+-rw-r--r-- 1 aashika aashika 0 May 3 2021 Frida 
+-rw-r--r-- 1 aashika aashika 0 Nov 12 2021 Hippo 
+-rw-r--r-- 1 aashika aashika 0 May 3 2021 Jaba
 
 7. Which chicken is very old? (Oldest modification time)
 Command:
 ls -l --sort=time
 Output (oldest is last):
+-rw-r--r-- 1 aashika aashika 0 Feb 14 2071 Elvis 
+-rw-r--r-- 1 aashika aashika 0 Nov 12 2021 Hippo 
+-rw-r--r-- 1 aashika aashika 0 May 3 2021 Buckbeak 
+-rw-r--r-- 1 aashika aashika 0 May 3 2021 Ethel 
+-rw-r--r-- 1 aashika aashika 0 May 3 2021 Frida 
+-rw-r--r-- 1 aashika aashika 0 May 3 2021 Jaba
 Elvis (future year)
-
 8. In a SINGLE command, move from `Chickens` to `Geese`.
 Command:
 cd ../Geese
@@ -84,13 +94,19 @@ Amelia  Boris  Lucy  Muffin
 Command:
 ls -l
 Output:
+-rw-r--r-- 1 aashika aashika 0 May 3 2021 Amelia 
+-rw-r--r-- 1 aashika aashika 0 May 3 2021 Boris 
+-rw-r--r-- 1 aashika aashika 0 May 3 2021 Lucy 
+-rw-r--r-- 1 aashika aashika 15 May 3 2021 Muffin
 Muffin  (size 15)
 
 11. Navigate to the `Horses` directory.
 Commands:
 cd ..
 cd ../Stable
-cd Horses
+cd Horses 
+   or
+cd ../../Stable/Horses
 
 12. How many horses are in the `Horses` directory?
 Command:
@@ -102,7 +118,7 @@ Archer  Buttons  Cookie  Jett
 Command:
 ls -a
 Output:
-.Troy
+Archer  Buttons  Cookie  Jett Troy
 
 --------------------------------
 Summary:
