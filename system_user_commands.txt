@@ -1,0 +1,45 @@
+echo:Prints text on the screen
+eg:
+  echo Hello 
+o/p: Hello
+
+man:Shows the manual (help documentation) of a command
+eg:man ls
+ (Press q to exit manual)
+
+-------------------------------------------------------------------------------------------------
+| Type of Command       | Description                        | Example         | Check Using     |
+--------------------------------------------------------------------------------------------------
+| External Command      | Program stored in system folders   | ls, cp, mv      | which ls        |
+|                       | (/bin, /usr/bin, /usr/local/bin)   |                 |                 |
+--------------------------------------------------------------------------------------------------
+| Shell Built-in        | Command built inside the shell     | cd, echo, pwd   | type echo       |
+| Command               | (no external file executed)        |                 |                 |
+--------------------------------------------------------------------------------------------------
+| Shell Function        | User-defined function inside shell | greet(){ echo   | type greet      |
+|                       |                                    | "Hello"; }      |                 |
+--------------------------------------------------------------------------------------------------
+| Alias                 | Shortcut/alternate name for a      | alias ll='ls -l'| type ll         |
+|                       | command                            |                 |                 |
+---------------------------------------------------------------------------------------------------
+
+
+
+
+type:Tells how a command is executed — built-in, alias, or file
+eg:type clear 
+   clear is /usr/bin/clear
+ 
+
+which: which shows the full path of a command (where it is stored in system).
+eg:which ls
+   /usr/bin/ls
+
+help:help gives help for shell built-in commands (works inside bash only).
+eg:help cd
+   cd: cd [-L|[-P [-e]] [-@]] [dir]
+    Change the shell working directory.
+
+whoami: Shows the current logged-in user name.
+
+who:Shows all users currently logged in and their session details (terminal, time).
