@@ -40,3 +40,8 @@ Steps to enable spell-check in Nano
 Open any file in Nano and press
 
 Ctrl + T
+
+jump to that line - ctrl +/
+from terminal: nano +15399 country_data.json
+
+To insert a file in another file : ctrl +R
