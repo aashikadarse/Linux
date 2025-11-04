@@ -33,3 +33,39 @@ Commands :A command is an instruction you give to the Linux system.
  -----------------------------
  | COMMANDS OPTIONS ARGUMENTS |
  -----------------------------
+
+Command:
+      A command is an instruction you give to the Linux system.
+      It tells Linux WHAT to do.
+eg:ls 
+   Meaning: list files/directories in current folder.
+  
+Option:
+      Options modify the behavior of a command.
+      It tells HOW the command should run.
+
+They usually start with:
+
+- (single letter option) eg: ls -l
+
+-- (full word option) eg:ls --all
+
+Argument:
+       Arguments tell the command WHAT to operate on (file/folder/target).
+       It specifies the target.
+
+eg:cd Documents
+  ---------------------------
+ | Term	    |     Meaning   |
+ ----------------------------
+ | Command  |  	What to do  |
+ | Option	  |   How to do   |
+ | Argument	|   On what     |
+ ----------------------------
+
+eg:ls -l /home
+
+Part	  Meaning
+ls	    command (list files)
+-l	    option (detailed list)
+/home	  argument (directory to list)
