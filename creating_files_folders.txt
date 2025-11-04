@@ -1,0 +1,46 @@
+Touch :
+      To create a new File from the command line
+  touch <filename>
+eg:touch color.txt 
+
+Creates files in the current directory
+If you try to use touch with a filr that already exists ,it will update 
+and modifies date to the current.
+  
+file : Is used to identify the type of a file
+    file filename
+eg:file hello.txt
+   
+How does file detect the file type?
+   file content + metadata
+        It examines the content of the file, not the name or extension.
+        Linux uses a system called magic numbers / magic bytes — special signatures inside files that help identify what they are.
+
+File names -
+Use lowercase
+Avoid spaces — use _ or -
+Start with letters
+Avoid special symbols (! @ # $ % & * ? > < | / \)
+Meaningful names only
+
+Rules:
+GOOD  -> clean, safe, no spaces, uses a-z 0-9 _ -
+BAD   -> works but inconvenient (spaces, too many dots, $, ?, uppercase confusion)
+UGLY  -> unsafe, may break shell or scripts (/ * > < | &, starts with -, null char)
+
+
+mkdir — Make Directory
+        mkdir is used to create a new directory (folder).
+
+mkdir foldername- mkdir Animals
+
+mkdir with multiple folders:
+  mkdir foldername foldername foldername
+
+mkdir -p — Create Parent Directories
+-p option creates parent directories also if they do not exist.
+
+eg:mkdir -p Farm/Barn/Cows
+  Farm/
+    └── Barn/
+         └── Cows/
