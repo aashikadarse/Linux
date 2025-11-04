@@ -1,0 +1,97 @@
+Root Directory (/):
+                The topmost directory in Linux (starting point of entire filesystem)
+                Everything exists under /
+                Path separator is /
+
+Home Directory (/home/username): 
+              Personal workspace for each user
+              Stores documents, downloads, config files etc.
+              Each user gets a folder inside /home
+    Shortcut:
+             ~ means home directory
+    Example:
+            cd ~ → goes to home
+
+pwd — Print Working Directory(from root)
+
+-----------------------------------------------------------------------------------------------------------
+| Path Type       | Description                          | Example                          | Starts With |
+-----------------------------------------------------------------------------------------------------------
+| Absolute Path   | Full path from root directory (/)    | /home/aashika/Documents/file.txt | / (slash)   |
+|                 | Does not depend on current location  | /usr/local/bin                   |             |
+-----------------------------------------------------------------------------------------------------------
+| Relative Path   | Path relative to current directory   | Documents/file.txt               | Does not    |
+|                 | Depends on where you currently are   | ../Downloads                     | start with /|
+-----------------------------------------------------------------------------------------------------------
+
+Special Notations:
+--------------------------------------------------------------
+| .   | Current directory                               |
+| ..  | Parent directory (one level up)                 |
+| ~   | Home directory (e.g., /home/aashika)            |
+--------------------------------------------------------------
+
+Examples:
+--------------------------------------------------------------
+pwd                                → Show current path
+cd /home/aashika/Documents         → Absolute path
+cd Documents                       → Relative path
+cd ..                              → Move to parent directory
+--------------------------------------------------------------
+
+
+cd — Change Directory
+--------------------------------------------------------
+| Command           | Meaning                         |
+--------------------------------------------------------
+| cd /home/aashika | Go to specific path (absolute)  |
+| cd Documents     | Go to subfolder (relative)      |
+| cd ..            | Move one directory back         |
+| cd ~             | Go to home directory            |
+| cd               | Go to home directory            |
+| cd /             | Go to root folder               |
+--------------------------------------------------------
+
+
+ls — List Files & Folders
+Basic -ls
+---------------------------------------------------------------
+| Option        | Meaning                       | Example     |
+---------------------------------------------------------------
+| ls -l        | long listing (details)        | ls -l       |
+| ls -a        | show hidden files             | ls -a       |
+| ls -la       | long + hidden                 | ls -la      |
+| ls -al       | long + hidden                 | ls -al      |
+| ls -h        | human readable sizes          | ls -lh      |
+| ls -R        | recursive (show subfolders)   | ls -R       |
+| ls -t        | sort by time                  | ls -lt      |
+| ls -r        | reverse order                 | ls -lr      |
+---------------------------------------------------------------
+
+ls -l 
+Output:
+drwxr-xr-x 3 aashika users 4096 Nov  3 13:00 project
+-rw-r--r-- 1 aashika users  512 Nov  2 09:12 notes.txt
+
+Field  	       Meaning
+d	          directory (if - then file)
+rwxr-xr-x	  permissions
+aashika	    owner
+users	      group
+4096	      size
+Nov 3	      date
+project	    name
+
+xdg-open:
+       xdg-open is used in Linux GUI environments
+       Opens any file/link using the default application
+       Similar to double-clicking in GUI
+
+xdg-open — Open Files/URLs with Default Application
+--------------------------------------------------------
+| Command            | Meaning                         |
+--------------------------------------------------------
+| xdg-open file.txt | Opens file with default editor   |
+| xdg-open folder   | Opens folder in file manager     |
+| xdg-open URL      | Opens URL in default browser     |
+--------------------------------------------------------
