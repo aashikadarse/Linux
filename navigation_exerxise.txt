@@ -12,7 +12,7 @@ Farm/
 	Stable/
 		Horses/
 ```
-----------------------Solve it-------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------
 
 **From this point forward, ONLY use the terminal to accomplish the following:**
 
@@ -31,52 +31,84 @@ Farm/
 12. How many horses are in the `Horses` directory?
 13. Wait! There is a hidden horse in the `Horses` directory! What is it's name??
 
------------------------------------------------Answers-----------------------------------------------------
-aashika@aashika:~$ cd Farm
-aashika@aashika:~/Farm$ ls
+----------------------------------------------------------------------------------------------------
+Farm Directory Exercise - Questions, Commands, and Output
+
+1. Open a new terminal window. Navigate to the `Farm` folder.
+Command:
+cd Farm
+
+2. List the contents of the `Farm` directory.
+Command:
+ls
+Output:
 Coop  Stable
-aashika@aashika:~/Farm$ cd Coop
-aashika@aashika:~/Farm/Coop$ ls
+
+3. Move into the `Coop` folder.
+Command:
+cd Coop
+
+4. List the contents of the `Coop` folder.
+Command:
+ls
+Output:
 Chickens  Geese
-aashika@aashika:~/Farm/Coop$ cd Chickens
-aashika@aashika:~/Farm/Coop/Chickens$ ls
+
+5. Move into the `Chickens` folder.
+Command:
+cd Chickens
+
+6. List out the chickens in the `Chickens` folder. How many are there?
+Command:
+ls
+Output:
 Buckbeak  Elvis  Ethel  Frida  Hippo  Jaba
-aashika@aashika:~/Farm/Coop/Chickens$ ls -l
-total 0
--rw-r--r-- 1 aashika aashika 0 May  3  2021 Buckbeak
--rw-r--r-- 1 aashika aashika 0 Feb 14  2071 Elvis
--rw-r--r-- 1 aashika aashika 0 May  3  2021 Ethel
--rw-r--r-- 1 aashika aashika 0 May  3  2021 Frida
--rw-r--r-- 1 aashika aashika 0 Nov 12  2021 Hippo
--rw-r--r-- 1 aashika aashika 0 May  3  2021 Jaba
-aashika@aashika:~/Farm/Coop/Chickens$ ls -l --sort=time
-total 0
--rw-r--r-- 1 aashika aashika 0 Feb 14  2071 Elvis
--rw-r--r-- 1 aashika aashika 0 Nov 12  2021 Hippo
--rw-r--r-- 1 aashika aashika 0 May  3  2021 Buckbeak
--rw-r--r-- 1 aashika aashika 0 May  3  2021 Ethel
--rw-r--r-- 1 aashika aashika 0 May  3  2021 Frida
--rw-r--r-- 1 aashika aashika 0 May  3  2021 Jaba
-aashika@aashika:~/Farm/Coop/Chickens$ cd ../Geese
-aashika@aashika:~/Farm/Coop/Geese$ pwd
-/home/aashika/Farm/Coop/Geese
-aashika@aashika:~/Farm/Coop/Geese$ ls
+
+7. Which chicken is very old? (Oldest modification time)
+Command:
+ls -l --sort=time
+Output (oldest is last):
+Elvis (future year)
+
+8. In a SINGLE command, move from `Chickens` to `Geese`.
+Command:
+cd ../Geese
+
+9. How many geese (files) are in the `Geese` directory?
+Command:
+ls
+Output:
 Amelia  Boris  Lucy  Muffin
-aashika@aashika:~/Farm/Coop/Geese$ ls -l
-total 4
--rw-r--r-- 1 aashika aashika  0 May  3  2021 Amelia
--rw-r--r-- 1 aashika aashika  0 May  3  2021 Boris
--rw-r--r-- 1 aashika aashika  0 May  3  2021 Lucy
--rw-r--r-- 1 aashika aashika 15 May  3  2021 Muffin
-aashika@aashika:~/Farm/Coop/Geese$ cd ..
-aashika@aashika:~/Farm/Coop$ cd ../Stable
-aashika@aashika:~/Farm/Stable$ ls
-Horses
-aashika@aashika:~/Farm/Stable$ cd Horses
-aashika@aashika:~/Farm/Stable/Horses$ ls
+
+10. Which goose is the largest? (largest file)
+Command:
+ls -l
+Output:
+Muffin  (size 15)
+
+11. Navigate to the `Horses` directory.
+Commands:
+cd ..
+cd ../Stable
+cd Horses
+
+12. How many horses are in the `Horses` directory?
+Command:
+ls
+Output:
 Archer  Buttons  Cookie  Jett
-aashika@aashika:~/Farm/Stable/Horses$ ls -a
-.  ..  Archer  Buttons  Cookie  Jett  .Troy
-aashika@aashika:~/Farm/Stable/Horses$ man ls
-aashika@aashika:~/Farm/Stable/Horses$ ls -m
-Archer, Buttons, Cookie, Jett
+
+13. Hidden horse name (hidden file)?
+Command:
+ls -a
+Output:
+.Troy
+
+--------------------------------
+Summary:
+Oldest chicken: Elvis
+Number of chickens: 6
+Number of geese: 4
+Largest goose: Muffin
+Hidden horse: .Troy
+
