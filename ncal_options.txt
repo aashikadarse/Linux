@@ -1,0 +1,130 @@
+Important ncal Options:
+
+ncal - Show current month calendar (default)
+   November 2025
+Su     2  9 16 23 30
+Mo     3 10 17 24
+Tu     4 11 18 25
+We     5 12 19 26
+Th     6 13 20 27
+Fr     7 14 21 28
+Sa  1  8 15 22 29
+
+
+ncal month year - Show calendar for a specific month & year
+eg:ncal 3 2024
+   March 2024
+Su     3 10 17 24 31
+Mo     4 11 18 25
+Tu     5 12 19 26
+We     6 13 20 27
+Th     7 14 21 28
+Fr  1  8 15 22 29
+Sa  2  9 16 23 30
+
+
+By default ncal starts week on Sunday.
+To switch to Monday-start :
+  ncal -M
+
+     March 2024
+Mo    4 11 18 25
+Tu    5 12 19 26
+We    6 13 20 27
+Th    7 14 21 28
+Fr  1 8 15 22 29
+Sa  2 9 16 23 30
+Su  3 10 17 24 31
+
+
+ncal -h : removes the highlight of current date
+
+Horizontal display (like cal) : ncal -b
+   November 2025
+Su Mo Tu We Th Fr Sa
+                   1
+ 2  3  4  5  6  7  8
+ 9 10 11 12 13 14 15
+16 17 18 19 20 21 22
+23 24 25 26 27 28 29
+30
+
+
+Show Julian calendar : ncal -j
+   November 2025
+Su 306 313 320 327 334
+Mo 307 314 321 328
+Tu 308 315 322 329
+We 309 316 323 330
+Th 310 317 324 331
+Fr 311 318 325 332
+Sa 305 312 319 326 333
+
+Shows day of year instead of date (Julian days)
+
+Display Easter date : ncal -e
+(It prints only Easter date) 
+
+Show previous, current, and next month : ncal -3
+    October 2025             November 2025             December 2025
+Su  5 12 19 26          Su  2  9 16 23 30          Su  7 14 21 28
+Mo  6 13 20 27          Mo  3 10 17 24             Mo  1  8 15 22 29
+Tu  7 14 21 28          Tu  4 11 18 25             Tu  2  9 16 23 30
+We  1  8 15 22 29       We  5 12 19 26             We  3 10 17 24 31
+Th  2  9 16 23 30       Th  6 13 20 27             Th  4 11 18 25
+Fr  3 10 17 24 31       Fr  7 14 21 28             Fr  5 12 19 26
+Sa  4 11 18 25          Sa  1  8 15 22 29          Sa  6 13 20 27
+
+
+A = After
+B = Before
+
+ncal -A1 :Show current month + 1 month after
+   November 2025
+Su  2  9 16 23 30
+Mo  3 10 17 24
+Tu  4 11 18 25
+We  5 12 19 26
+Th  6 13 20 27
+Fr  7 14 21 28
+Sa  1  8 15 22 29
+
+   December 2025
+Su  7 14 21 28
+Mo  1  8 15 22 29
+Tu  2  9 16 23 30
+We  3 10 17 24 31
+Th  4 11 18 25
+Fr  5 12 19 26
+Sa  6 13 20 27
+
+ncal -B1 : Show current month + 1 month before
+
+   October 2025
+Su  5 12 19 26
+Mo  6 13 20 27
+Tu  7 14 21 28
+We  1  8 15 22 29
+Th  2  9 16 23 30
+Fr  3 10 17 24 31
+Sa  4 11 18 25
+
+   November 2025
+Su  2  9 16 23 30
+Mo  3 10 17 24
+Tu  4 11 18 25
+We  5 12 19 26
+Th  6 13 20 27
+Fr  7 14 21 28
+Sa  1  8 15 22 29
+
+ncal -w:Show week numbers
+   November 2025
+Su    2  9 16 23 30   
+Mo    3 10 17 24
+Tu    4 11 18 25
+We    5 12 19 26
+Th    6 13 20 27
+Fr    7 14 21 28
+Sa  1 8 15 22 29
+   44 45 46 47 48 49
