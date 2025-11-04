@@ -50,6 +50,7 @@ cd — Change Directory
 | cd ~             | Go to home directory            |
 | cd               | Go to home directory            |
 | cd /             | Go to root folder               |
+| cd ../..         | Two levels up                   |
 --------------------------------------------------------
 
 
