@@ -1,0 +1,82 @@
+
+https://plum-poppy-0ea.notion.site/Navigation-Exercise-cfabfffd1fc04c22a76b6e3ebb60a4ca
+
+Download the above file in Ubuntu, **unzip it**, and drag the resulting **`Farm`** folder to your **Desktop**.   
+ The Farm folder contains the following subdirectories:
+
+```bash
+Farm/
+	Coop/ 
+		Chickens/
+		Geese/
+	Stable/
+		Horses/
+```
+----------------------Solve it-------------------------------------------------------------------------------
+
+**From this point forward, ONLY use the terminal to accomplish the following:**
+
+1. Open a new terminal window. Navigate to the `Farm` folder.
+2. List the contents of the `Farm` directory.
+3. "Move" into the `Coop` folder.
+4. List the contents of the `Coop` folder.
+5. "Move" into the `Chickens` folder.
+6. List out the chickens in the `Chickens` folder.  How many are there?
+7. One of the chickens is very very old, which one is it? (which file in the `Chickens` folder has the
+    oldest modification time?) Use a command to figure it out!
+8. In a **single** command, move from the `Chickens` directory to the `Geese` directory.  Consult the folder structure written out above if needed.
+9. How many geese (files) are in the `Geese` directory?
+10. One of the geese is sitting on a golden egg!  It's larger than the other geese. Which one is it?  (which file in the `Geese` folder is the largest?).  Use a command to figure it out!
+11. Navigate to the `Horses` directory.  Consult the folder structure written out above, if needed.
+12. How many horses are in the `Horses` directory?
+13. Wait! There is a hidden horse in the `Horses` directory! What is it's name??
+
+-----------------------------------------------Answers-----------------------------------------------------
+aashika@aashika:~$ cd Farm
+aashika@aashika:~/Farm$ ls
+Coop  Stable
+aashika@aashika:~/Farm$ cd Coop
+aashika@aashika:~/Farm/Coop$ ls
+Chickens  Geese
+aashika@aashika:~/Farm/Coop$ cd Chickens
+aashika@aashika:~/Farm/Coop/Chickens$ ls
+Buckbeak  Elvis  Ethel  Frida  Hippo  Jaba
+aashika@aashika:~/Farm/Coop/Chickens$ ls -l
+total 0
+-rw-r--r-- 1 aashika aashika 0 May  3  2021 Buckbeak
+-rw-r--r-- 1 aashika aashika 0 Feb 14  2071 Elvis
+-rw-r--r-- 1 aashika aashika 0 May  3  2021 Ethel
+-rw-r--r-- 1 aashika aashika 0 May  3  2021 Frida
+-rw-r--r-- 1 aashika aashika 0 Nov 12  2021 Hippo
+-rw-r--r-- 1 aashika aashika 0 May  3  2021 Jaba
+aashika@aashika:~/Farm/Coop/Chickens$ ls -l --sort=time
+total 0
+-rw-r--r-- 1 aashika aashika 0 Feb 14  2071 Elvis
+-rw-r--r-- 1 aashika aashika 0 Nov 12  2021 Hippo
+-rw-r--r-- 1 aashika aashika 0 May  3  2021 Buckbeak
+-rw-r--r-- 1 aashika aashika 0 May  3  2021 Ethel
+-rw-r--r-- 1 aashika aashika 0 May  3  2021 Frida
+-rw-r--r-- 1 aashika aashika 0 May  3  2021 Jaba
+aashika@aashika:~/Farm/Coop/Chickens$ cd ../Geese
+aashika@aashika:~/Farm/Coop/Geese$ pwd
+/home/aashika/Farm/Coop/Geese
+aashika@aashika:~/Farm/Coop/Geese$ ls
+Amelia  Boris  Lucy  Muffin
+aashika@aashika:~/Farm/Coop/Geese$ ls -l
+total 4
+-rw-r--r-- 1 aashika aashika  0 May  3  2021 Amelia
+-rw-r--r-- 1 aashika aashika  0 May  3  2021 Boris
+-rw-r--r-- 1 aashika aashika  0 May  3  2021 Lucy
+-rw-r--r-- 1 aashika aashika 15 May  3  2021 Muffin
+aashika@aashika:~/Farm/Coop/Geese$ cd ..
+aashika@aashika:~/Farm/Coop$ cd ../Stable
+aashika@aashika:~/Farm/Stable$ ls
+Horses
+aashika@aashika:~/Farm/Stable$ cd Horses
+aashika@aashika:~/Farm/Stable/Horses$ ls
+Archer  Buttons  Cookie  Jett
+aashika@aashika:~/Farm/Stable/Horses$ ls -a
+.  ..  Archer  Buttons  Cookie  Jett  .Troy
+aashika@aashika:~/Farm/Stable/Horses$ man ls
+aashika@aashika:~/Farm/Stable/Horses$ ls -m
+Archer, Buttons, Cookie, Jett
