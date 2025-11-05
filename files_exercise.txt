@@ -1,0 +1,85 @@
+https://plum-poppy-0ea.notion.site/Working-With-Files-Exercise-1f1136c779da4f3286e6cfb6c934d571
+
+## Part 1
+
+- Use a command to print out the entire contents of the `poem.txt` file. Use an option so that the output also includes line numbers.
+- That is a headache to read all at once! Read poem.txt using `less` instead.
+    - Scroll down one line at a time
+    - Scroll up one line at a time
+    - Scroll down one "page" at a time
+    - Scroll up one "page" at a time
+- Search within less for the term "Dog".  Can you find the line that contains it?
+    - **BONUS:** can you run a case-insesitive search?  The poem contains both "dog" and "Dog" on separate lines.
+- Now it's time to do some research! Find the option to tell less to open with lines numbers displayed. Open `poem.txt` this way
+- Then find the "command" you can type into less to go to exactly 50% of the way through the file.
+- Use a command to find the number of **words** in `poem.txt`
+- Run a command to print out the first 4 lines of `poem.txt`
+- Run a command to print out the last 8 lines of `poem.txt`
+
+## Part 2
+
+- Run a command to print out the lines in `purchases.txt` in reverse order (last line printed first)
+- Run a command to print out the lines in `purchases.txt`, sorted alphabetically.
+- Run a command to count the number of **lines** in `purchases.txt`
+- Run a command to print out the lines in `purchases.txt`, sorted by the price (the final column) in the dataset in REVERSE order (highest price to lowest price)
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+## Part 1
+
+Q: Use a command to print out the entire contents of poem.txt with line numbers.
+   cat -n poem.txt
+
+Q: Read poem.txt using less.
+   less poem.txt
+
+  Scroll down one line at a time:
+  j  OR  down arrow
+
+  Scroll up one line at a time:
+  k  OR  up arrow
+
+  Scroll down one page at a time:
+  spacebar OR PageDown
+
+  Scroll up one page at a time:
+  b  OR PageUp
+
+Q: Search within less for the term "Dog".
+  less purchases
+   /Dog
+
+Q: BONUS: Case-insensitive search in less.
+  less  -i purchases
+   /dog
+
+Q: Open poem.txt with line numbers in less.  
+  less -N poem.txt
+
+Q: Command in less to go to 50% of the file.
+    50%
+
+Q: Find the number of words in poem.txt.
+   wc -w poem.txt
+
+Q: Print first 4 lines of poem.txt.
+  head -n 4 poem.txt
+
+Q: Print last 8 lines of poem.txt.
+  tail -n 8 poem.txt
+
+
+## Part 2
+
+Q: Print lines in purchases.txt in reverse order (last to first).
+   tac purchases.txt
+
+Q: Print lines in purchases.txt sorted alphabetically.
+   sort purchases.txt
+
+Q: Count number of lines in purchases.txt.
+   wc -l purchases.txt
+
+Q: Sort purchases.txt by price (last column) in reverse order (highest first).
+   sort -k3 -n -r purchases.txt
