@@ -1,0 +1,7 @@
+copying : we can use the copy command to create copies of files and folders
+         cp <source> <destination>
+      eg:cp sheep.txt dolly.txt
+
+to copy multiple files - cp file1 file2 directory
+
+to copy folder with contents - cp -r project/backup
