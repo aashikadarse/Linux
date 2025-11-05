@@ -1,0 +1,60 @@
+CLEARING : ctrl l 
+to clear the entire screen
+
+LINE JUMPING:
+to the beginning of the line : ctrl+a
+to the end of the line: ctrl+e
+
+MOVING CHARACTERS
+to move cursor forward one character at a time - ctrl+f(right arrow)
+to move cursor backwards one character at a time- ctrl+b(left arrow)
+
+JUMPING WORDS
+to move the cursor forward one word - alt+f
+to move the cursor backward one word - alt +b
+
+SWAPPING
+to swap the current character with the one preceding it - ctrl +t
+to swap the current word with the one preceding it - alt +t
+
+KILING 
+to kill the text from the cursor location intil the end of the line -> : ctrl+k
+to kill the text from the currnt cursor location to the beginning of the line <- : ctrl+u
+
+
+KILING A WORDS
+to kill the text from the current cursor location through the end of the word -> : alt+d
+to kill the text from the current cursor through the beginning of the word <- : ctrl+w or alt+delete
+
+YANKING (REVIVING TEXT)
+to retrieve the most recently killed text - ctrl+y
+------------------------------------------------------------------------------------
+  Shortcut Category   Action                               Shortcut
+------------------- ------------------------------------ ---------------------------
+  Clear Screen        Clear entire screen                  Ctrl + L
+  Line Jumping        Move to beginning of line            Ctrl + A
+  Line Jumping        Move to end of line                  Ctrl + E
+  Moving Characters   Move cursor forward char             Ctrl + F (→)
+  Moving Characters   Move cursor backward char            Ctrl + B (←)
+  Jumping Words       Move cursor forward word             Alt + F
+  Jumping Words       Move cursor backward word            Alt + B
+  Swapping            Swap current char with previous      Ctrl + T
+  Swapping            Swap current word with previous      Alt + T
+  Killing             Kill text to end of line             Ctrl + K
+  Killing             Kill text to beginning of line       Ctrl + U
+  Killing Words       Kill word to end                     Alt + D
+  Killing Words       Kill word to beginning               Ctrl + W / Alt + Delete
+  Yanking             Retrieve most recently killed text   Ctrl + Y
+--------------------------------------------------------------------------------------
+
+HISTORY
+The history command shows the list of commands you have previously run in the terminal.
+
+Command                      	Meaning
+history	                  Shows command history
+history 10	              Shows last 10 commands
+!number	                  Runs the command at history number
+!string                  	Runs the last command starting with that string
+Ctrl + R	                Search command history (reverse search)
+history -c	              Clears history in the current session
+HISTSIZE                  gives the size 
