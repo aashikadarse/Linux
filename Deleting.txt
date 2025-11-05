@@ -1,0 +1,29 @@
+rm — Remove Files & Directories
+
+The rm command is used to delete files and folders permanently in Linux.
+
+⚠️ Files deleted with rm do not go to trash — they are gone immediately.
+
+Syntax:
+rm filename 
+
+rm -d : — Remove Empty Directory Only
+Command            	 Meaning	                                      Example	                        Result
+rm -d folder	 Deletes directory only if it is empty          	  rm -d notes	              Removes notes only if nothing inside
+
+rm -r : — Remove Directory Recursively
+Command	                     Meaning	                                Example	                              Result
+rm -r folder	 Deletes directory and all files & subfolders inside  rm -r notes	             Removes notes + everything inside
+
+rm -rf — Force Recursive Delete (Very Dangerous❗)
+Command       	Meaning	                                             Example
+rm -rf folder	Delete everything inside forcefully (no warnings)	    rm -rf notes
+
+Tip: safer option
+rm -ri folder : Asks confirmation before each delete.
+-i :prompt before every removal
+
+rm -r folder	                                   rm -rf folder
+Deletes directory                             	Deletes directory
+Stops & asks if file is write-protected        	Deletes EVERYTHING without asking
+Safer	                                          Most dangerous command
