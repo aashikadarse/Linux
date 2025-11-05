@@ -1,0 +1,18 @@
+move command (mv)- to move files and directories from one location to another
+  mv <source> <destination>
+  eg:mv app.css styles/
+
+Renaming :we can use mv commnad to rename files and Folders
+          mv <current> <new name>
+          mv chickens.txt roosters.txt
+
+move and rename: move and rename at same time 
+                 mv <filename> <destination>/ <newnamw>
+              eg:mv notes.txt docs/notes1.txt
+
+Task            | Meaning                       | Example                        | Result
+----------------|-------------------------------|--------------------------------|-------------------------------
+Rename a file   | Change file name              | mv old.txt new.txt             | old.txt → new.txt
+Move a file     | Move file to another folder   | mv file.txt folder/            | Moves file.txt into folder
+Move & Rename   | Move + rename at same time    | mv notes.txt docs/notes1.txt   | Moved & renamed
+Move a folder   | Move a directory              | mv Music/ Backup/              | Moves Music into Backup
