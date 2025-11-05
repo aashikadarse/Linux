@@ -1,0 +1,93 @@
+cat:Will read the contents of a file and print them out 
+   cat <filename>
+
+If we provide cat with multiple files,it will concatenate their 
+contents and output them.
+cat <file1> <file2> 
+ -- will output file1 first and immediately after print the contents of files2
+
+less:command displays the content of a file,one page at a time
+     we can navigate forward and backwards through the file.
+     less <filename>
+
+     Open less with line numbers
+     Research → option is -N or --LINE-NUMBERS.
+    Open file with line numbers:
+    eg:less -N poem.txt
+  
+tac :will concatenate and print files in reverse.
+     it prints each line of a file, starting with the last line .
+     you can think of it as printing in reverse "vertically".
+             first line
+     file -> second line
+             third line
+
+    tac file.txt  ->third line
+                    second line
+                    first line
+
+rev :prints the contents of a file, reversing the order of each line 
+     rev file.txt
+-------------------------------------------------------------------------------------------------
+head:The head command prints a portion of a file starting from the beginning of the file.
+     By default it prints the first 10 line of a file
+     head filename.txt
+
+head contd:we can specify a number of lines for head to print using the -n option (or --lines)
+     head -n 13 filename.txt
+
+head contd contd:we can also provide a number of bytes to print out rather than lines using the -c option
+                 head -c 8 filename.txt
+
+tail:The tail command prints a portion of a file from the ending of the file.
+     By default it prints the last 10 line of a file
+     tail filename.txt
+
+tail contd:we can specify a number of lines for tail to print using the -n option (or --lines)
+     tail -n 10 filename.txt
+     tail -13 filename.txt also works 
+
+tail -f :Is a very useful Linux command for live monitoring a file.
+
+What tail -f does?
+tail -f shows the last lines of a file and keeps watching it for new updates.
+It is commonly used to watch log files in real time.
+tail -f filename 
+------------------------------------------------------------------------------------------
+wc: word count -- wc filename
+  command can tell us the number of words,lines or bytes in files.
+  by default it prints out three numbers: lines
+                                          words
+                                          bytes
+
+we can use the  -l option to limit the output of the number of lines
+                -w option to limit the output to the number of words in the file
+                -c option to limit the output to the number of characters in the file
+                -m  option to limit the output to the number of bytes in the file
+------------------------------------------------------------------------------------------------
+sort: the sort command outputs the sorted contents of a file .
+      By default ,it will sort the lines of a file alphabetically
+      sort filename.txt
+
+ --numeric-sort :-n 
+   sort -n filename
+
+-nr :reverse numeric sort
+    sort -nr filename
+
+-u :sort unique value only ignores the duplicates
+    sort -u filename
+
+Advanced sorting by Field:
+     we can specify a particular "column" that we want to sort by 
+     using the -k opation followed by a field number
+
+     sort data.txt -nk 2  - in this example it tells sort to use the 
+     numeric sort and to sort using the 2nd fiels 
+
+     eg: pencil 0.50          pencil 0.50
+         flower 9.99  -->     pie 4.99
+         pie 4.99             flower 9.99
+
+
+       
