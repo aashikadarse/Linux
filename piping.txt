@@ -1,0 +1,96 @@
+Pipes :
+-----------
+ Are used to redirect a stream from one program to another program .
+ We can take the output of one command and redirect it to the input of another.
+                     command -->
+                   /    2
+             Pipe / 
+            /
+           /
+ --> command
+       1
+
+Syntax:
+-------
+we use pipe character | to seperate commands
+     command 1 | command 2
+  the output of the first command will be passed to the standard input of the second command
+
+  eg: date |rev
+     ls /usr/bin -1 | wc -l 
+
+  > vs | 
+  -------
+   though both the characters are used to redirect output they do it in very different ways
+   > connects a command to some file
+   | connects a command to another command
+  
+  tr - transaltes  the text with an argument
+  ---
+  eg: msg.txt - she sells shells by the seashore
+  cat msg | tr s S -- tr works as cat and then replaces s with S
+  She SellS ShellS by the SeaShore
+   
+   cat msg | tr a-z A -Z --replaces the lower to upper case
+   SHE SELLS SHELLS BY THE SeaShore
+
+   cat msg |tr -d s delete s from the file
+   he ell hells by the eahore
+   
+   working with multiple files
+   ---------------------------
+   tac | rev 
+   ----------
+   tac file.txt |rev
+
+   first line          third line            enil driht
+   second line  --->   second line  --->     enil dnoces
+   third line          first line            enil tsrif 
+
+   we are calling tac with a file and then piping the output to rev .
+   The final result is the content of file.txt printed "horizontally"
+   and "vertically" reversed
+
+   cat | head | tail
+   ------------------
+   eg: cat file | head -7 | tail -5
+
+   ls | sort | head 
+   ----------------
+   eg:ls-lh | sort -rhk 5 | head -3
+   
+   This example display the 3 largest files in the current directory, using ls,sort,and head
+
+   ls -lh → Lists files in long format with human-readable sizes (e.g., 2K, 3M, 1G).
+   → Shows file details like permissions, size, date, and name.
+
+   sort -rhk 5 →
+
+   -k 5 → Sorts by the 5th column (the file size column).
+
+   -h → Understands human-readable size units (K, M, G).
+
+   -r → Sorts in reverse order (largest → smallest).
+
+   head -3 → Displays only the top 3 results, i.e., the 3 largest files.
+
+   for finding the 3 files that occupy large space
+   du -ah 
+   du (Disk Usage) →
+   Shows how much disk space is being used by files and directories.
+
+   -h (human-readable) →
+   Displays sizes in an easier-to-read format (e.g., KB, MB, GB) instead of raw bytes.
+
+   -a (all) →
+   Includes both files and directories (by default, du shows only directory sizes).
+
+tee command
+-----------
+The tee command reads standard input and copies it both to standard output and to a file.
+This allows us to capture information part of the way through a pipeline without 
+interrupting the flow.
+command 1 | tee filename | command 2
+
+eg: cat colors.txt words.txt | tee colorsandwords.txt | wc
+
