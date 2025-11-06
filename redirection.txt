@@ -1,0 +1,75 @@
+Redirecting the standard output:
+--------------------------------
+ the redirect output symbol(>)
+ tells the shell to redirect the output of a command to a specific file instead of the screen 
+ command > filename
+ date > output.txt - the date command will print the current date to the screen
+                     if we instead run this the output will be redirected to a file called output.txt
+
+  sort -k5n list.txt > sorted_list.txt                    
+
+Appending :
+-----------
+ when we redirect output into a file using > any existing contents in the file are overwritten 
+ to instead keep the existing contents in the file and add new content to the end of the file 
+ use >> when redirecting
+
+ date >> cal.txt
+
+ echo meow >>cat.txt
+
+ Redirecting input:
+ ------------------
+ To pass the contents of a file to standard input,use the <
+ symbol followed by the filename
+ command < filename
+
+eg: cat<chicken.txt
+
+Redirecting standard input and output together
+-----------------------------------------------
+we can redirect standard input and output at the same time .
+ eg: cat < original.txt > output.txt
+    here cat reads the contents of a original.txt and then redirecting the output 
+    to a file called output.txt
+
+ eg:sort < names.txt > sorted.txt
+   here we are redirecting the names.txt file to the sort command.we are also reidrecting the 
+   output of sort to a file called sorted.txt
+
+Redirecting standard error :
+----------------------------
+By default error messages are output to the screnn ,but we can change this by redirecting standard error
+the standard error redirection operator is 2>
+eg: cat nonexistenfile 2>error.txt
+
+
+why 2> /
+each stream gets its own numeric file descriptor and for standard error the number is 2
+                                      standard
+                                      output(1)
+                                    /
+standard input(0)  ----> command   /
+                                   \
+                                    \
+                                      standard error(2)
+
+all together now 
+----------------
+eg: cat bees.txt ants.txt >insects.txt 2>error.txt
+    here we are concatenating two files,redirecting standard output to a file called
+    insects.txt and redirecting standard error to a file called error.txt
+
+Redirecting standard output and error to the same file 
+eg:ls docs >output.txt 2>output.txt
+
+           or
+
+  we could instead use 2>&1 which is a fancy sytax for saying "redirect standard error to the same location as standard output
+  ls docs > output.txt 2>&1
+
+  newer versions of bash --
+   for redirecting both standard output and standard error to the same file 
+   &>
+   eg:ls docs &> output.txt
+      ls docs &>> output.txt
