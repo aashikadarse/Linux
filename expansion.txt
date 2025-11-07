@@ -1,0 +1,154 @@
+Wildcard Characters (aka globbing patterns)
+----------------------------------------------
+-we can use special wildcard characters to build patterns that can match multiple filenames at once
+
+* -- character represents zero or more characters in a filename.
+
+-ls *.html : will match any files that end with 
+            .html like index.html and  navbar.html
+
+-cat blue* : will match any files that start with "blue" like
+             "blue.html" or "bluesteel.js"
+
+eg: ls - *at*
+--------------------------cat.js
+--------------------------data.txt
+
+? -- character represents any single character
+
+-Is app.?? -- will match any files name app that end with 
+              two character file extensions like app.js or app.py but not app.css
+
+-Is pic?.png --will match pic1.png,pic2.png,pic3.png, but also picA.png or picx.png
+
+Range Wildcards
+----------------
+Inside of square brackets [] we can specify a range of characters to match
+
+-Is pic[123].png will only match pic1.png, pic2.png and pic3.png
+
+-Is file[0-9] will match file1,file2....9 
+
+-Is [A-F]* will match any files that begin with a capital 
+           A,B,C,D,E or F 
+
+Negating Ranges 
+---------------
+Inside of square brackets we can specify a range of characters to not match
+using a caret (^)
+
+-Is[^a]* will match any files that do NOT start with "a"
+
+Is[^0-9]* will match any files that do NOT start with a 
+         numeric digit (0-9)
+
+~Tilde expansion
+----------------
+eg: echo ~
+   /home/kitty 
+
+   user path
+
+Brace expansion
+---------------
+It is used to generate arbitary strings.
+Basically it will generate multiple strings for us based on a pattern .
+we provide a set of strings inside of curly baces {}
+
+eg:touch page{1,2,3}.txt -- will generate three new files .
+    page1.txt
+    page2.txt
+    page3.txt 
+  
+  {a..b} works with only two dots
+echo page{1..7}
+page1 page2 page3 page4 page5 page6 page7 
+---------------------------------------------------------------
+mkdir -p: make directory and its parents if needed.
+
+mkdir -p {Mon,Tue,Wed}/{breakfast,lunch,dinner}
+Braces expansion part:
+
+The shell (bash) expands the {} part before running mkdir.
+
+{Mon,Tue,Wed} expands to → Mon, Tue, Wed
+
+{breakfast,lunch,dinner} expands to → breakfast, lunch, dinner
+
+When combined with /, bash creates every possible combination like this:
+
+Mon/breakfast
+Mon/lunch
+Mon/dinner
+Tue/breakfast
+Tue/lunch
+Tue/dinner
+Wed/breakfast
+Wed/lunch
+Wed/dinner
+
+
+So 3 × 3 = 9 total directories 
+
+ The -p option:
+
+Ensures that if parent directories (Mon, Tue, Wed) do not exist, they are created automatically.
+
+Prevents errors if directories already exist.
+
+ Final result:
+
+After running the command, your directory tree looks like this:
+
+Mon/
+├── breakfast/
+├── lunch/
+└── dinner/
+
+Tue/
+├── breakfast/
+├── lunch/
+└── dinner/
+
+Wed/
+├── breakfast/
+├── lunch/
+└── dinner/
+
+Nested Brace Expansion 
+----------------------
+echo{x,y{1..5},z}
+x y1 y2 y3 y4 y5 z
+
+Arithemetic Expansion
+---------------------
+syntax:$((expression))
+Inside the parantheses we can right arithmetic expressions using:
++ addition
+- subtraction
+* multiplication
+/ division
+** exponentiation
+%modulo
+
+eg: echo $((1+2)) - 3
+
+Quoting
+-------
+' ' : single quotes Literal text no expansion
+" " : double quotes Expandable text( variables + commands work)
+
+echo 'This is $USER' - This is $USER
+
+echo "This is $USER"- This is aashika
+ 
+command substitution
+--------------------
+
+we can use the $(command) syntax to display the output of another command.
+
+eg:echo "today is $(date)" - today is Thu 01 May 03:10:31 PM IST
+
+other syntax is : ` `
+
+eg: echo today is `date`
