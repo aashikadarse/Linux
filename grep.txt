@@ -1,0 +1,23 @@
+Grep:
+-----
+This command searches for patterns in each files's contents.
+Will print each line that matches a pattern we provide
+
+example : grep "chicken" animals.txt will print each line from 
+         the animals.txt file that contains the pattern "chicken" 
+
+
+Word Search :
+------------
+the -w option to ensure that grep only matches words,
+rather than fragments located inside of other words.
+
+eg:grep -w "cat" book.txt
+   grep -w "cat" book.txt would match cat but not cather
+
+Recursive Search
+----------------
+use the -r option to perform a ecursive search which will include all files under
+a directory,subdirectories and their files ,and so on.
+
+if we don't specify a starting directory grep will search the cuurent working directory 
