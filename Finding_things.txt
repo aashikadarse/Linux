@@ -1,0 +1,143 @@
+Locate:
+--------
+ Performs a search of pathnames accross our machine that match a given substring and 
+ then prints out any matching names.
+
+ eg: locate Mon
+
+ Locate options:
+-----------------
+ -e: will only print entries that actually exist at the time locate is run
+
+ -i: option tells locate to ignore casing
+
+ -l or --limit : option will limit the number of entries that locate retrieves.
+
+Sometimes locate shows files that you have deleted, because it relies on an older database.
+To fix this: sudo updatedb
+This refreshes the database with your current filesystem.
+
+
+find: 
+-----
+By default ,find on its own will list every single file and directory nested in our current
+      working directory
+     
+     we can also provide specific folder.
+     eg: find friends/
+         would print all the files and directories inside the friends directory(including nested folders)
+
+finding by type  - find [path] -type [type_flag]
+--------------
+we can tell find to only find by file type:
+only print files,directories,symbolic links, etc using the -type option
+
+find -type f : will limit the search to files
+find . -type f -- ( . ) current folder
+
+find -type d : will limit the search to directories
+
+finding by  name - 
+---------------
+we can provide a specific pattern for find to use when matching filename and
+directories with the -name option 
+we need to enclose our pattern in quotes
+
+find ~/desktop -name "*.txt" -to find all files on our desktop that end in the .txt
+
+finding by size
+----------------
+we can use the -size option to find files of a specific size.
+For example, to find all files larger than 1 GB 
+we could run by ----  find -size +1G 
+
+To find all files that are exactly 20KB 
+we can run ----- find -size 20K 
+
+To find all the files that are under 50MB
+we can run ----- find -size -50M 
+
+finding by owner
+----------------
+we can use the -user option to match files and directories that belong to a 
+particular user.
+
+find ~ -user kitty
+
+finding empty files/folders
+-------------------
+find -empty
+
+find -empty -type f
+
+HOW TIMESTAMPS WORK
+--------------------
+mtime - modification time, is when a file was last modified .whne its contents last changed.
+
+ctime - change time,is when a file was last changed.This occur anytime mtime changes but also 
+        when we rename a file ,move it or alter permissions
+
+atime - access time , is updated when a file is ready by an application or a command like cat
+
+eg: touch last_week -d "1 week ago"
+    here we are changing the date of file to 1 week back
+
+Command	                      Meaning
+find . -mtime -1	      Modified in last 1 day
+find . -mtime +7	      Modified more than 7 days ago
+find . -ctime -2	      Permissions or metadata changed in last 2 days
+find . -atime -3	      Accessed (read) in last 3 days
+find . -mtime -90         Modified within 3 months
+find . -mmin -5           Modified in the last 5 minutes
+find /home -amin -30      Accessed within 30 min
+find /home -mmin -30      Modified within 30 min
+find /home -cmin -30      Metadata changed within 30 min
+
+Find with logical operators
+---------------------------
+we can use the -and ,-or,-and -not operators to create more complex queries
+
+
+User - Defined Actions:
+-----------------------
+we can provide find with our own action to perform using each pathname
+Normally, find just locates files.
+But user-defined actions let you decide what to do with each file that matches — like deleting, copying, moving, counting lines, etc.
+exec 
+----
+Executes the command silently for all matches
+find -exec command {};
+
+find ~ -type f -empty -exec ls -l {} ;
+
+ok
+--
+Prompts before executing each command — safer for destructive actions like rm
+find -empty -ok rm '{}' ';'
+
+xargs
+-----
+takes input (usually from another command’s output) and converts it into arguments for another command.
+It’s often used when commands don’t accept input from standard input (stdin) directly.
+
+command1 | xargs command2
+→ This means “take the output of command1 and use it as input for command2
+
+Deleting files listed by find
+find . -type f -name "*.log" | xargs rm
+
+
+Meaning:
+find finds all .log files.
+xargs rm deletes them one by one.
+
+Equivalent to:
+rm file1.log file2.log file3.log ...
+
+eg:echo hello world | xargs mkdir 
+
+eg: find -name "chapter[1-4].txt" | xargs cat > fullbook.txt
+    this example finds four indicidual chapter files
+    chapter1,chapter2,chapter3 and  chapter4 ,then passes
+    them to the cat command ,which then outputs the
+    combined contents to a file called fullbook.txt
