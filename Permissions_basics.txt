@@ -1,0 +1,240 @@
+1. Linux is a Multi-User System
+   Linux is designed to allow multiple users to use the system simultaneously.
+   Each user has a username and unique UID (user ID).
+   Users are grouped into groups, which also have a GID (group ID).
+   Every file and directory in Linux is owned by a user and a group.
+
+2. Basic Permissions
+
+Every file or directory has 3 types of permissions for 3 classes of users:
+
+Class	Description
+Owner (u)	The user who owns the file
+Group (g)	Users in the file’s group
+Others (o)	Everyone else
+
+Permission	     Meaning
+r	Read     →   can view file contents or list directory
+w	Write    →   can modify file or add/remove files in directory
+x	Execute  →   can run file as a program or enter directory
+
+3. Viewing Permissions
+   Use ls -l:
+   ls -l file.txt
+
+Example output:
+-rw-r--r-- 1 aashika users 1024 Nov 10 10:00 file.txt
+
+Breaking it down:
+
+-rw-r--r-- → permissions
+
+- → regular file (d for directory, l for link)
+
+rw- → owner has read + write
+
+r-- → group has read only
+
+r-- → others have read only
+
+1 → number of hard links
+
+aashika → owner
+
+users → group
+
+1024 → file size in bytes
+
+Nov 10 10:00 → last modified date
+
+file.txt → filename
+
+File owners and group owners
+---------------------------
+File: file.txt
+Permissions: -rw-r-----  
+Owner: aashika  
+Group: users
+
+Breakdown:
+- rw- (owner: aashika) → read + write  
+- r-- (group: users) → read only  
+- --- (others) → no access
+
+Owner → usually creator of the file; has the most control
+Group owner → group of users with shared access
+Others → everyone else
+Permissions for each are separate: owner, group, others
+
+The first character indicates file type:
+
+Symbol	  File Type      	          Description
+-	       Regular file	     Normal file containing data, text, or program
+d	       Directory	         Folder containing other files or directories
+l	       Symbolic link	     Pointer to another file or directory
+c	       Character device	   Device file for character-based devices (keyboard, mouse)
+b	       Block device	       Device file for block-based devices (hard disk, USB)
+p	       Named pipe (FIFO)   Special file for inter-process communication
+s	       Socket	             Used for network communication between processes
+
+Permissions:
+-----------
+
+character                    Effect on Files                               Effect on Directories
+r                         file can be read                            directory's content can be listed
+w                         file can be modified                        directory's content can be modified
+                                                                      (create new files,rename files/folders)
+                                                                       but only if the executable attribute is also set
+x                         file can be treated as a program             allows a directory to be entered or 
+                          to be executed                               "cd"ed in
+-                         file cannot be read ,modified, or executed   directory contents cannot be shown,
+                          ,file cannot bre read ,modified,             modified or cd'ed into depending on the 
+                           or executed depending on                    location of the -charachter                                         
+                           location of the character
+                      
+
+chmod:  chmod mode file
+------
+To change the permissions of a file or directory,we can use the chmod command.
+
+To use chmod to alter permissions, we need to tell it:
+who we are changing permissions for
+what changes are we making? Adding> Removing?
+which permissions are we setting?
+
+1.Who
+     - u -user(the owner of the file)
+     - g -group(members of the group the file belongs to)
+     - o -others(the world)
+     - a -all of the above
+
+2.What
+     - minus  -removes the permission
+     + plus   -grants the permission
+     = equals -set a permission and removes others
+
+3.Which
+     r-the read permission
+     w-the write permission
+     x-the execute permission
+
+     eg: rw-r--r--
+        chmod g+w file.txt
+        rw-rw-rr--
+
+      eg: rw-rw-r--
+         chmod a-w file.txt
+         r--r--r--
+
+      eg: rw-rw-r--
+         chmod u+x file.txt
+         rwx-rw-r--
+
+      eg: rwxrwxr--
+          chmod a=r file.txt
+          r--r--r--
+
+chmod octals
+------------
+chmod also supports another way of representing permission patterns : octal numbers
+Each digit in an octal number represents 3 binary digits
+
+Octal   Binary  File mode
+0        000      ---
+1        001      --x
+2        010      -w-
+3        011      -wx 
+4        100      r--
+5        101      r-x
+6        110      rw-
+7        111      rwx
+
+eg: chmod 755 file.txt
+    rwxr-xr-x
+
+su:
+---
+su stands for substitute user or switch user.
+It’s a command used to switch from the current user to another user in the system, usually the root user.
+
+su -username  
+su	Switch user or root	 Target user’s password	   Full shell as new user
+
+Root User:
+---------
+The root user can run any command and access any file on the machine ,regardless of the file's actual owner.
+The root user has  tons of power and could easily damage or even destroy the system by running the wrong commands.
+For this reason,Ubuntu locks the root user by default.
+
+sudo
+-----
+Even if the root user is locked by default,we can still run specific commands as the root user
+by using the sudo command.
+
+Individual users are granted an "allowed " list of commands they can run as the super user.
+To run a command as the root user, prefix it with sudo.
+You will then need to enter the password for your account.
+For example to update Ubuntu, I would need to run apt update.However, I can't do this as my "regular" user
+as it impacts all users.
+              -----------------
+Instead run  | sudo apt update |
+              -----------------
+
+Chown
+-----
+This command is used to change the owner and/ or the group owner of a specific file or directory.
+eg:chown kitty file.txt 
+
+chown stands for change owner.
+It is used to change the owner and/or group of a file or directory.
+Only the root user or a user with sudo privileges can change ownership.
+
+2. Basic Syntax
+chown [OPTIONS] NEW_OWNER[:NEW_GROUP] FILE
+
+Part	                       Meaning
+NEW_OWNER	          The username of the new owner
+NEW_GROUP	Optional. The new group name (after :)
+FILE	File or directory whose ownership you want to change
+
+3. Examples
+a) Change only owner
+   sudo chown alice file.txt
+
+   Changes owner to alice
+   Group remains the same
+
+   ls -l file.txt
+  -rw-r--r-- 1 alice users 1024 Nov 10 10:00 file.txt
+
+b) Change only group
+   sudo chown :admin file.txt
+
+  Changes group to admin
+  Owner remains the same
+
+  ls -l file.txt
+  -rw-r--r-- 1 alice admin 1024 Nov 10 10:00 file.txt
+
+c) Change owner and group together
+   sudo chown alice:admin file.txt
+   Owner → alice
+   Group → admin
+
+d) Change ownership recursively (directories)
+   sudo chown -R alice:admin Documents/
+   -R → recursive → applies to all files and subdirectories in Documents/
+
+e) Verify ownership
+   ls -l file.txt
+
+Output format:
+-rw-r--r-- 1 alice admin 1024 Nov 10 10:00 file.txt
+  First column → permissions
+  Owner → alice
+  Group → admin
+
+4. Key Points
+   Only root or sudo users can change ownership.
+   Changing owner does not affect permissions (r, w, x remain same).
+   Changing group allows users in that group to access the file as per group permissions
