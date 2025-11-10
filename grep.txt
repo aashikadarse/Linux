@@ -17,8 +17,121 @@ eg:grep -w "cat" book.txt
 
 Recursive Search
 ----------------
-use the -r option to perform a ecursive search which will include all files under
+use the -r option to perform a recursive search which will include all files under
 a directory,subdirectories and their files ,and so on.
 
-if we don't specify a starting directory grep will search the cuurent working directory 
+if we don't specify a starting directory grep will search the current working directory 
 test
+
+eg: grep -ri "name" filename/
+
+Grep options:
+-------------
+
+-c :counts in how many lines that word had occured .
+eg: grep "happy" grepcount.txt - c
+
+-w: matches "I" as a whole word only 
+this prevents matches inside other words like "IN" or "FIRE"
+
+Option	           Meaning	                                           Example	                                       Output Description
+-A NUM	After – shows the match line + NUM lines after	     grep -A 2 "happy" file.txt	             If "happy" is on line 5, shows lines 5, 6, 7
+-B NUM	Before – shows the match line + NUM lines before	  grep -B 3 "happy" file.txt	             If "happy" is on line 5, shows lines 2, 3, 4, 5
+-C NUM	Context – shows the match line + NUM lines before 	  grep -C 2 "happy" file.txt	             If "happy" is on line 5, shows lines 3, 4, 5, 6, 7
+                   and after
+
+
+-n → Show line numbers
+Adds line numbers before each matching line.
+Eg:
+grep -n "Happiness" practice.txt
+Example output:
+2:Happiness comes in small moments, like a smile from a stranger.
+2: → this line number in the file.
+
+
+-m NUM → Stop after NUM matches
+Tells grep to stop searching after it finds a certain number of matches.
+eg:
+grep -m 2 "happy" practice.txt
+
+Explanation:
+"happy" → the pattern to search
+-m 2 → stop after 2 matching lines are found
+
+Regex : we can provide regular expressions to grep. 
+------  Regular expressions help us match complex patterns,but the sytax does differ.
+
+.    - matches any single character
+      eg: grep 'p...' songsofmyself.txt 
+
+^    - mathces the start of a line
+       eg: grep "^I" songsofmyself.txt -w
+
+$    - matches the end of  a line
+       eg: grep ')$' songsofmyself.txt 
+ 
+[abc]- matches any character in the set 
+       eg: grep 'a[1-6]' songsofmyself.txt 
+
+[^abc]-matches any char NOT in set
+       It just looks for at least one character that is NOT a, b, or c.
+
+[A-Z]- matches characters in a range
+       grep "[A-Z]" example.txt
+  
+*    -repeat previous expression 0 or more times
+      grep "lo*" example.txt
+
+\    -escape meta-characters
+     grep "2\.5" example.txt
+     Explanation:
+                 . is normally a wildcard in regex (matches any character).
+                 \. → escape it to match a literal dot.
+                 So 2\.5 matches the string 2.5 exactly.
+
+-E → extended regular expressions
+--------------------------------
+     Enables extended regex, so you can use ?, +, |, () without escaping.
+
+Normally in basic grep, ? would need \? to be recognized.
+ birds? → the regex itself
+
+In extended regex:
+
+? → means “the preceding character 0 or 1 times”
+
+
+So birds? matches:
+
+bird  → because 's' occurs 0 times  
+birds → because 's' occurs 1 time
+
+Summary of the command
+grep "birds?" -wE filename.txt
+
+
+Search in filename.txt
+
+Match whole words (-w)
+
+Use extended regex (-E)
+
+Pattern: bird or birds (the s is optional)
+
+
+{} in regex
+------------
+In extended regex (-E), curly braces {} are used for repetition counts, not character sets.
+
+Example: a{2} → matches exactly two as (aa)
+
+a{1,3} → matches 1 to 3 as (a, aa, or aaa)
+
+Piping to grep:
+---------------
+A common use case is to use grep to whittle down or filter a large chunk of data.
+
+eg:ps -aux | grep hermione
+   In this example the ps -aux command will output a huge list of all processes running on our 
+   machine.We pipe that data to grep and then filter it down to only the processes that "hermione"
