@@ -1,0 +1,47 @@
+curl
+----
+It transfers the url
+curl stands for Client URL — it’s a command-line tool used to transfer data to or
+ from a server using various protocols (like HTTP, HTTPS, FTP, etc.).
+
+Think of it like a way to talk to websites, APIs, or servers directly from your terminal.
+
+1-->check curl is there or not 
+2-->sudo apt install curl
+3--> curl "wttr.in"
+4--> try adding a place name
+    eg: curl "wttr.in/Hyderbad"
+5-->nano weather
+   #!/bin/bash
+   curl "wttr.in"
+6-->ls -l
+7-->chmod +x weather 
+8--> try running weather (it runs)
+-------------------------------
+9-->nano weather
+    curl "wttr.in$1"
+10-->now try running it
+    weather vizag 
+    it takes vizag as argument ($1)
+
+------------------------
+9-->nano weather
+#!/bin/bash
+
+case $1 in 
+-h | --help)
+       echo "WELCOME TO WEATHER HELP"
+       echo "-3  for next 3 days of weather"
+       ;;
+-3)
+      echo "YOU PROVIDED -3"
+      CURL "wttr.in"
+      ;;
+-l | --location)
+      curl "wttr.in/$2"
+      ;;
+*)
+    curl "wttr.in?m1"
+    ;;
+esac
+10-->now run it 
