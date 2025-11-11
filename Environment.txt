@@ -1,0 +1,191 @@
+The Environment:
+----------------
+The shell maintains a set of information during a shell session,known as the environment.
+It's just a key-value pairs that define properties like:
+- your home directory
+- your working directory
+- The name of your shell
+- The name of the logged in user
+
+Viewing the Environment:
+-----------------------
+printenv
+use the printenv command to view the environment variables and their current values.
+
+
+Parameter Expansion
+-------------------
+echo User
+USER
+
+echo $USER
+aashika
+ variable prefixed with a dollar sign($), the shell will replace it with the actual value
+
+Defining variables
+------------------
+To define a variable,use the 
+syntax : variable=value
+
+Built-in variables are upper-cased, so its a commom convention to lowercase custom variables to prevent confusion
+
+
+1. Shell Variables
+-----------------------
+   Shell variables are local to the current shell session.
+   They are created and used only in that shell — they do not get passed to other programs or subshells.
+   As soon as you close the terminal, they are gone.
+
+  Example:
+       name="Aashika"
+       echo $name
+  Output:
+      Aashika
+
+
+Now open a new terminal or subshell:
+
+echo $name
+output: (nothing)
+Because name is a shell variable, it was not inherited by the new shell.
+
+2. Environment Variables
+--------------------------
+   Environment variables are global variables.
+   They are inherited by child processes (programs, subshells, scripts).
+   Typically used to configure system behavior, like $PATH, $HOME, $USER, etc.
+ Example:
+     export name="Aashika"
+     echo $name
+
+
+Now open a subshell:
+echo $name
+Output:
+Aashika
+
+
+View all shell variables:
+------------------------
+set
+
+View only environment variables:
+------------------------------
+printenv
+ or
+env
+5. Permanent Environment Variables
+----------------------------------
+If you want a variable to persist every time you open a terminal:
+
+Add it to your ~/.bashrc or ~/.profile:
+export name="Aashika"
+Then reload:
+source ~/.bashrc
+
+Startup File
+-------------
+What is PS1?
+
+PS1 stands for Prompt String 1.
+It defines how your shell prompt looks — that text you see before you type a command in the terminal.
+Example:
+When you open your terminal, you might see:
+aashika@ubuntu:~$
+Here, the part aashika@ubuntu:~$ is your prompt, and it’s controlled by the variable PS1.
+1.View your current prompt format
+  echo $PS1
+
+Startup files are configuration scripts that the shell (like Bash) automatically reads and executes when a session starts.
+They set up your environment — variables, aliases, prompt styles, and paths.
+
+Types of Shell Sessions
+------------------------
+Type	                           Description	                                                     Example
+Login shell	              You log in through a console, SSH, or 
+                          terminal that asks for a username/password.	                 Logging into system or using ssh user@host
+Non-login shell	          A new shell opened inside an existing session.	             Opening a new terminal window or running bash manually
+
+Startup Files for Login Shells
+------------------------------
+When you log in, Bash reads these files in order:
+
+/etc/profile → System-wide configuration (for all users)
+
+~/.bash_profile → User-specific
+
+~/.bash_login → Used if .bash_profile doesn’t exist
+
+~/.profile → Used if neither of the above exists
+
+ Usually, only one of the user files (.bash_profile, .bash_login, .profile) is used.
+
+ Customizing the prompt:
+ -----------------------
+ for easy bash PS1 generator : Flogisoft.com , ezprompt.net
+ Step 1: Open your .bashrc file
+       nano ~/.bashrc
+
+Step 2: Add a colorful prompt (PS1)
+
+Step 3: Save and apply
+       After adding your preferred line:
+       Press Ctrl + O → save
+       Press Enter → confirm
+       Press Ctrl + X → exit
+
+step 4: source ~/.bashrc
+
+aliases
+-------
+We can definr our commands using the alias keyword
+alias ll='ls-al'
+in the example to the right,we are defining an alias called ll
+which is equivalent to running ls-al.
+To execute it, we would simply run ll
+
+Verbose literally means “talkative” or “detailed.”
+In Linux commands, when you use a verbose option (usually -v),
+ it makes the command show more information about what it’s doing.
+
+alias cp='cp -vi'
+cp file1.txt file2.txt
+'file1.txt' -> 'file2.txt'
+If file2.txt already exists:
+cp: overwrite 'file2.txt'? y
+
+-i
+interactive
+Asks before performing an action
+alias rm='rm -i'
+
+
+To see all your active aliases
+alias
+
+If you just want to remove it for this session only:
+unalias alias_name
+
+To remove all aliases at once:
+unalias -a
+
+To remove it permanently
+-------------------------
+Aliases that are set in .bashrc (or sometimes .bash_profile) will come back each time you open a new terminal —
+so you need to delete them from the file too.
+
+Steps:
+Open the file:
+nano ~/.bashrc
+
+Look for the alias line, like:
+alias ll='ls -l'
+alias cls='clear'
+
+Delete or comment (#) the line(s).
+Example:
+# alias ll='ls -l'
+Save and exit (Ctrl + O, Enter, Ctrl + X).
+
+Apply changes:
+source ~/.bashrc
