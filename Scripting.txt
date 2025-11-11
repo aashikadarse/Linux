@@ -1,0 +1,59 @@
+The Basic Steps:
+----------------
+1.Write a script in a file and save it
+2.Make the script executable using chmod
+3.Verify that the shell can find your script
+                                          -------------
+The first line of our script should read | #!/bin/bash |
+                                          -------------
+
+#! is called the shebang, it’s used to tell the OS which interpreter
+it should use when parsing this file.
+
+We want ours to say "use bash to interpret this file!"
+eg:
+nano hi
+#!/bin/bash
+# this is first script
+echo "hello there $USER"
+echo "today is $(date)"
+save and exit
+
+run- bash hi
+
+path variable
+-------------
+It's list of directories.
+It is ordered.
+
+scripting - its says command not found
+from anywhere (that’s where the two steps come in).
+bash scripting -it works
+
+1 — Make your script executable
+Right now, it only works with bash scripting because it doesn’t have execute permission.
+
+Let’s fix that 
+
+chmod +x ~/bin/scripting
+ls -l ~/bin
+-rwxr-xr-x 1 aashika aashika  75 Nov 11 15:50 scripting
+The x means it’s executable now.
+
+2 — Add ~/bin to your PATH
+Now, let’s make the system recognize anything in your ~/bin folder as a command.
+
+Check if it’s already in PATH:
+echo $PATH
+If you don’t see /home/aashika/bin (or ~/bin) in that list, add it with this command:
+echo 'export PATH=$PATH:~/bin' >> ~/.bashrc
+Then reload your configuration:
+source ~/.bashrc
+
+3 — Test it!
+Now from anywhere (like your home directory), just type:
+scripting
+You should see:
+Hello there, aashika
+Today is Tue Nov 11 15:50:11 IST 2025
+ — your script is now a global command!
