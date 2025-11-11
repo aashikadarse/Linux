@@ -198,7 +198,7 @@ NEW_GROUP	Optional. The new group name (after :)
 FILE	File or directory whose ownership you want to change
 
 3. Examples
-a) Change only owner
+(a) Change only owner
    sudo chown alice file.txt
 
    Changes owner to alice
@@ -207,7 +207,7 @@ a) Change only owner
    ls -l file.txt
   -rw-r--r-- 1 alice users 1024 Nov 10 10:00 file.txt
 
-b) Change only group
+(b) Change only group
    sudo chown :admin file.txt
 
   Changes group to admin
@@ -216,16 +216,16 @@ b) Change only group
   ls -l file.txt
   -rw-r--r-- 1 alice admin 1024 Nov 10 10:00 file.txt
 
-c) Change owner and group together
+(c) Change owner and group together
    sudo chown alice:admin file.txt
    Owner → alice
    Group → admin
 
-d) Change ownership recursively (directories)
+(d) Change ownership recursively (directories)
    sudo chown -R alice:admin Documents/
    -R → recursive → applies to all files and subdirectories in Documents/
 
-e) Verify ownership
+(e) Verify ownership
    ls -l file.txt
 
 Output format:
@@ -238,3 +238,146 @@ Output format:
    Only root or sudo users can change ownership.
    Changing owner does not affect permissions (r, w, x remain same).
    Changing group allows users in that group to access the file as per group permissions
+
+   Working with group demos:
+   ------------------------
+   Create a New Group
+   Command:
+         sudo groupadd developers
+   This creates a new group called developers.
+   You can confirm it with:
+
+   getent group developers
+           or
+   cat /etc/group | grep developers
+  Output example:
+        developers:x:1002:
+
+   developers → group name
+   x → password placeholder
+   1002 → group ID (GID)
+   (blank) → no members yet
+2. Add Users to the Group
+   There are two ways:
+  (a) Add an existing user
+    sudo usermod -aG developers aashika
+  -aG → append the user to the supplementary group (important!)
+   developers → group name
+    aashika → username
+
+Note: Don’t forget the -a — without it, the user is removed from all other groups!
+
+Check if it worked:
+id aashika
+Example output:
+uid=1001(aashika) gid=1001(aashika) groups=1001(aashika),27(sudo),1002(developers)
+
+(b) Add a new user directly to the group
+sudo useradd -m -G developers rashmi
+  -m → create home directory
+  -G developers → adds the user to developers group
+3. Check Group Members
+   To list users in a group:
+   getent group developers
+   Example output: developers:x:1002:aashika,rashmi
+ It shows all members of the developers group.
+
+4. Remove User from Group
+   sudo gpasswd -d aashika developers
+  Output:
+  Removing user aashika from group developers
+
+5. Delete a Group (optional)
+  sudo groupdel developers
+
+Summary
+Task	                                       Command
+Create a group	                        sudo groupadd groupname
+Add user to group	                     sudo usermod -aG groupname username
+Create user in group	                  sudo useradd -m -G groupname username
+Check group members	                  getent group groupname
+Remove user from group	               sudo gpasswd -d username groupname
+Delete group	                        sudo groupdel groupname
+
+Let’s go through how both users can work together in a group — step by step, clearly explained.
+
+1. Create the Group
+   sudo groupadd projectteam
+   This creates a group called projectteam.
+
+2. Add Both Users to the Group
+   sudo usermod -aG projectteam aashika
+   sudo usermod -aG projectteam cherry
+
+   Now check if they are members:
+   getent group projectteam
+
+  Output:
+    projectteam:x:1003:aashika,cherry
+
+ 3. Create a Shared Folder
+   Let’s make a folder for them to work together:
+   sudo mkdir /home/shared_project
+   
+   Now give that folder to the group:
+   sudo chown :projectteam /home/shared_project
+
+  This means:
+    Owner → (root or whoever created it)
+    Group → projectteam
+
+  Check:
+    ls -ld /home/shared_project
+   Output:
+     drwxr-xr-x 2 root projectteam 4096 Nov 10 15:30 /home/shared_project
+
+ 4. Give Group Permissions
+   To let both aashika and cherry read/write inside:
+
+   sudo chmod 770 /home/shared_project
+
+  770 means:
+   Owner → full access (rwx)
+   Group → full access (rwx)
+  Others → no access
+Now the directory looks like:
+drwxrwx--- 2 root projectteam 4096 Nov 10 15:30 /home/shared_project
+5. How Aashika Works
+
+Login as aashika:
+
+su - aashika
+cd /home/shared_project
+touch notes.txt
+echo "Project details by Aashika" > notes.txt
+ls -l
+
+Output:
+-rw-rw---- 1 aashika projectteam 25 Nov 10 15:32 notes.txt
+
+6. How Cherry Works
+
+Now login as cherry:
+
+su - cherry
+cd /home/shared_project
+cat notes.txt
+
+Cherry will see:
+Project details by Aashika
+
+Cherry can also edit or add:
+echo "Cherry added more info" >> notes.txt
+
+
+Now both users are collaborating on the same file because they share the same group (projectteam) and have group write permission.
+
+Step	                                           Command	                                                   Description
+Create group	                               sudo groupadd projectteam	                                  New shared group
+Add users	                                  sudo usermod -aG projectteam aashika
+                                              sudo usermod -aG projectteam cherry	                       Add both users
+Create shared folder	                         sudo mkdir /home/shared_project	                             Common workspace
+Change group ownership	                      sudo chown :projectteam /home/shared_project	              Assign to group
+Give permissions	                            sudo chmod 770 /home/shared_project	                       Group can read/write
+Work inside folder	                          su - aashika / su - cherry	                                Both can collaborate
+
